@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Trading</title>
+    <link rel="stylesheet" href="exp.css">
+</head>
+<body>
+    <video autoplay muted loop id="backgroundVideo">
+        <source id="videoSource" source src="https://videos.pexels.com/video-files/3945008/3945008-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="container">
+        <h1>Interactive TradeView</h1>
+        <div class="grid-layout"> <!-- Grid layout div -->
+        
+            <!-- Widget 1 -->
+            <div class="widget" id="widget1">
+                <div class="front">
+                    <h2>About</h2>
+                    <p>Click to reveal content</p>
+                </div>
+                <div class="back">
+                    <h2>Details</h2>
+                    <p>This shows some information about graph.</p>
+                    <button  id="button" onclick="showAbout()">About</button>
+                </div>
+            </div>
+
+            <!-- Widget 4 -->
+            <div class="widget" id="widget4">
+                <div class="front">
+                    <h2>Collection</h2>
+                    <p>Click to reveal content</p>
+                </div>
+                <div class="back" input type="text" id="stock-symbol" placeholder="Enter stock symbol" value="AAPL">
+                    <h2>Data Collection</h2>
+                    <p>Data will be collected from the graph</p>
+                    <button onclick="collectData()" id="button">Collect Data</button>
+                </div>
+            </div>
+
+            <!-- Widget 2 -->
+            <div class="widget" id="widget2" onclick="location.href='https://www.bing.com'">
+                <div class="front">
+                    <h2>Search</h2>
+                    <p>Click to reveal content</p>
+                </div>
+                <div class="back">
+                    <h2>Search whatever you like</h2>
+                    <p>clicking and to will be directed to Bing</p>
+                </div>
+            </div>
+            <div class="inputbox" id="box">
+                <input type="text" id="trading-url" placeholder="Enter Trading URL">
+                <button onclick="updateGraph()">Update Graph</button>
+            </div>
+            <!-- Graph -->
+            <div class="graph" id="graph-iframe">
+                <h2>Live Trading Graph</h2>
+                <iframe src="https://www.tradingview.com/widgetembed/" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <!-- Widget 5 -->
+            <div class="widget" id="widget5"> <!-- Updated id from widget4 to widget5 -->
+                <div class="front">
+                    <h2>Analyze</h2>
+                    <p>Click to reveal content</p>
+                </div>
+                <div class="back">
+                    <h2>Data Analyzing</h2>
+                    <p>This is some detailed information inside Widget 5.</p>
+                    <input type="file" id="file-input" accept=".json" />
+                    <button onclick="analyzeData()" id="analyze-button">Analyze Data</button>
+                    <canvas id="chart" width="400" height="200"></canvas>
+                    <div id="results"></div>
+                </div>
+            </div>
+            <!-- Widget 3 -->
+            <div class="widget" id="widget3" onclick="console.log('You clicked Widget 3!')">
+                <div class="front">
+                    <h2>Animation</h2>
+                    <p>Click to reveal content</p>
+                </div>
+                <div class="back">
+                    <h2>Enjoy website animation</h2>
+                    <p>CLICK AGAIN TO STOP</p>
+                </div>
+            </div>
+
+            <!-- Widget 6 -->
+            <div class="widget" id="widget6" onclick="href='E:\ENG PROJECTS\FUN\web\web.html'">
+                <div class="front">
+                    <h2>For Anime Lovers</h2>
+                    <p>Click to reveal content</p>
+                </div>
+                <div class="back">
+                    <h2>Widget 6</h2>
+                    <p>You can change the background and also search whatever you like</p>
+                    <a href="https://ariweb.ccbp.tech" class="btn btn-secondary" target="_blank">Click</a>
+                </div>   
+            </div>
+
+        </div> <!-- End of grid-layout -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script defer src="exp.js"></script>
+    <script id="my-script">
+        var e = document.createElement('div');
+        e.innerHTML = "<p></p>";
+        var script = document.getElementById('my-script');
+        script.parentNode.insertBefore(e, script.nextSibling);
+    </script>
+    
+</body>
+</html>

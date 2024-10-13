@@ -1,0 +1,291 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    color: #fff;
+    font-size: 16px;
+    overflow-x: hidden;
+    height: auto;
+    background: radial-gradient(circle at center, #1e1e2f, #151529);
+    overflow-y: auto;
+    transition: transform 0.5s ease;
+}
+.container {
+    display: flex;
+    gap: 30px;
+    perspective: 1200px; /* Enables 3D effect */
+    margin-top: 50px;
+    justify-content: left; /* Center the container horizontally */
+    align-items: left;
+    padding:0 20px;
+    margin:0 auto;
+    max-width: 1200px;
+    flex-wrap: wrap;
+}
+
+h1 {
+    position:absolute ;
+    top: 10%;
+    left: 55%; /* add left property to center horizontally */
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 2em;
+    color: white;
+}
+h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+/* Placing widgets in the grid */
+#widget1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#widget4 {
+    grid-column: 4 / 10;
+    grid-row: 1 / 2;
+}
+
+#widget2 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+#box{
+    grid-column: 3 / 4;
+    grid-row: center;
+    width: 100%;
+}
+
+.graph {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+    width: 90%;
+}
+
+#widget5 {
+    grid-column: 4 / 10;
+    grid-row: 2 / 3;
+}
+
+#widget3 {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    transition: transform 0.5s ease;
+}
+
+#widget6 {
+    grid-column: 4 / 10;
+    grid-row: 3 / 4;
+}
+
+
+.widget {
+    width: 250px;
+    height: 350px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background: linear-gradient(145deg, #2193b0, #6dd5ed);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    margin:10px;
+}
+
+.widget:hover {
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.widget .front, .widget .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+
+}
+
+.widget .front {
+    background: rgba(255, 105, 180, 0.8);
+    font-size: 1.2em;
+}
+
+.widget .back {
+    background: rgba(46, 204, 113, 0.8);
+    transform: rotateY(180deg);
+    font-size: 1.1em;
+}
+.widget:hover {
+    transform: rotateY(180deg); /* Flips the widget */
+}
+
+.widget {
+    animation: slideIn 1.5s ease;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.graph {
+    width: 700px;
+    height: 500px;
+    transform: perspective(1000px) rotateY(0deg);
+    background: #1e1e2f;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    
+}
+
+.graph iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* 3D Rotation on hover */
+.graph:hover {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.active-animation {
+    animation: widget3-rotation 1s infinite linear;
+}
+.active-website-animation {
+    animation: website-animation 5s infinite linear;
+    transform-origin: center;
+    transition: transform 0.5s ease;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    animation-play-state: paused;
+    /* Optional, can add other visual effects here, like changing the background color or adding visual cues */
+  }
+  @keyframes website-animation {
+    0% {
+      /* Initial state */
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      /* Midpoint */
+      transform: scale(1.1);
+      opacity: 0.8;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+      /* Final state */
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+  @media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .graph {
+        grid-column: span 2;
+        height: 300px;
+    }
+
+    .widget {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .graph {
+        grid-column: span 1;
+        height: 250px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}
+#results {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+.back a {
+    text-decoration: none;
+    color: #ffdd57;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+#button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    display: flex;
+}
+.inputbox{
+    display: auto;
+    padding: 20px;
+    margin-right: 10px;
+    height: auto;
+    justify-items: center;
+    align-items: center;
+}
+#backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure the video stays behind the content */
+}
